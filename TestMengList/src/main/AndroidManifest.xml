@@ -43,6 +43,7 @@
             android:enabled="true"
             android:exported="false"/>
 
+        <!--List Recycler 启动Activity-->
         <activity
             android:name=".MainFrescoActivity"
             android:label="@string/title_activity_main_fresco">
@@ -58,6 +59,7 @@
 
         </activity>
 
+        <!--PhotoPicker 启动Activity-->
         <activity
             android:name=".MainPhotoPickerActivity"
             android:label="@string/title_activity_main_photo_picker">
