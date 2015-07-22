@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/MengBao.iml" filepath="$PROJECT_DIR$/MengBao.iml" />
       <module fileurl="file://$PROJECT_DIR$/MengBottomSheets/MengBottomSheets.iml" filepath="$PROJECT_DIR$/MengBottomSheets/MengBottomSheets.iml" />
+      <module fileurl="file://$PROJECT_DIR$/MengGlidePalette/MengGlidePalette.iml" filepath="$PROJECT_DIR$/MengGlidePalette/MengGlidePalette.iml" />
       <module fileurl="file://$PROJECT_DIR$/MengListLib/MengListLib.iml" filepath="$PROJECT_DIR$/MengListLib/MengListLib.iml" />
       <module fileurl="file://$PROJECT_DIR$/MengPhotoPicker/MengPhotoPicker.iml" filepath="$PROJECT_DIR$/MengPhotoPicker/MengPhotoPicker.iml" />
       <module fileurl="file://$PROJECT_DIR$/MengRecyclerView/MengRecyclerView.iml" filepath="$PROJECT_DIR$/MengRecyclerView/MengRecyclerView.iml" />

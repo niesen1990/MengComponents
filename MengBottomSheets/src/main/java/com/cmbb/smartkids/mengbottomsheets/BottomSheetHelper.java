@@ -18,7 +18,7 @@ public class BottomSheetHelper {
     /**
      * Create a BottomSheet Builder for creating share intent chooser.
      * You still need to call show() to display it like:
-     * <p/>
+     * <p>
      * Intent sharingIntent = new Intent(Intent.ACTION_SEND);
      * shareIntent.setType("text/plain");
      * shareIntent.putExtra(Intent.EXTRA_TEXT, "hello");
@@ -42,11 +42,9 @@ public class BottomSheetHelper {
             @Override
             public void onClick(@NonNull DialogInterface dialog, int which) {
                 ActivityInfo activityInfo = list.get(which).activityInfo;
-                ComponentName name = new ComponentName(activityInfo.applicationInfo.packageName,
-                        activityInfo.name);
+                ComponentName name = new ComponentName(activityInfo.applicationInfo.packageName, activityInfo.name);
                 Intent newIntent = (Intent) intent.clone();
-                newIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK |
-                        Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED);
+                newIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED);
                 newIntent.setComponent(name);
                 activity.startActivity(newIntent);
             }

@@ -2,7 +2,9 @@ package com.cmbb.smartkids.testmenglist;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -12,7 +14,6 @@ import android.widget.Button;
 import com.cmbb.smartkids.photopicker.PhotoPickerActivity;
 import com.cmbb.smartkids.photopicker.utils.PhotoPickerIntent;
 import com.pgyersdk.feedback.PgyFeedbackShakeManager;
-import com.pgyersdk.update.PgyUpdateManager;
 
 import java.util.List;
 
@@ -24,10 +25,16 @@ public class MainPhotoPickerActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_photo_picker);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        ActionBar bar = getSupportActionBar();
+        if (null != bar) {
+            bar.setDisplayHomeAsUpEnabled(true);
+        }
         assignViews();
     }
 
-    private Button button, button2;
+    private Button button;
 
     private void assignViews() {
         button = (Button) findViewById(R.id.button);
@@ -37,29 +44,6 @@ public class MainPhotoPickerActivity extends AppCompatActivity {
                 PhotoPickerIntent intent = new PhotoPickerIntent(MainPhotoPickerActivity.this);
                 intent.setPhotoCount(9);
                 startActivityForResult(intent, REQUEST_CODE);
-            }
-        });
-        button2 = (Button) findViewById(R.id.button2);
-        button2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                PgyUpdateManager.register(MainPhotoPickerActivity.this, App.PGY_APPID);
-
-                /*PgyUpdateManager.register(MainPhotoPickerActivity.this, App.PGY_APPID,
-                        new UpdateManagerListener() {
-
-                            @Override
-                            public void onUpdateAvailable(final String result) {
-                                // 调用sdk的默认下载，apk下载地址为result字符串中downloadURL对应的值
-                                String downloadUrl = "apk下载地址";
-                                Log.i("pgy", "pgy result = " + result);
-                                //startDownloadTask(MainActivity.this, downloadUrl);
-                            }
-
-                            @Override
-                            public void onNoUpdateAvailable() {
-                            }
-                        });*/
             }
         });
     }

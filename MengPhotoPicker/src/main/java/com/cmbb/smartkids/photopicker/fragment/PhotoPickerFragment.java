@@ -97,11 +97,8 @@ public class PhotoPickerFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 listPopupWindow.dismiss();
-
                 PhotoDirectory directory = mPhotoDirectories.get(position);
-
                 btSwitchDirectory.setText(directory.getName());
-
                 mPhotoGridAdapter.setCurrentDirectoryIndex(position);
                 mPhotoGridAdapter.notifyDataSetChanged();
             }

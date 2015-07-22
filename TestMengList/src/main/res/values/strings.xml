@@ -3,11 +3,21 @@
     <string name="action_settings">设置</string>
     <string name="title_activity_main_fresco">萌测</string>
 
-<!-- TODO: Remove or change this placeholder text -->
+    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_main_app_bar">MainAppBarActivity</string>
 
     <string name="hello_world">Hello world!</string>
-    <string name="title_activity_main_photo_picker">MainPhotoPickerActivity</string>
-    <string name="title_activity_main_bottom_sheet">BottomSheets</string>
+    <string name="title_activity_main_photo_picker">图片选择器</string>
+    <string name="title_activity_main_bottom_sheet">底部选项卡</string>
+    <string name="title_activity_home">萌组件</string>
+    <string name="material_multiple">Material组合</string>
+    <string name="recycler_component">Recycler组件</string>
+    <string name="photo_picker">图片选择组件</string>
+    <string name="bottom_sheets">底栏选择器</string>
+    <string name="palette_component">取色组件</string>
+    <string name="title_activity_main_palette">Palette组件</string>
+    <string name="title_activity_main_recycler">Recycler组件</string>
+    <string name="title_activity_main_pgy">蒲公英内测升级</string>
+    <string name="update_component">蒲公英升级</string>
 </resources>

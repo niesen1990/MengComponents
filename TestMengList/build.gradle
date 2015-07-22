@@ -38,4 +38,5 @@ dependencies {
     compile project(':MengPhotoPicker')
     compile files('libs/pgyer_sdk_2.1.2.jar')
     compile project(':MengBottomSheets')
+    compile project(':MengGlidePalette')
 }

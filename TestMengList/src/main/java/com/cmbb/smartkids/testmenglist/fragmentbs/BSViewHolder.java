@@ -65,7 +65,7 @@ public class BSViewHolder extends RecyclerView.ViewHolder {
                             sheet = new BottomSheet.Builder(context).icon(getRoundedBitmap(context, R.mipmap.ic_launcher)).title("To " + bsModel.getName()).sheet(R.menu.menu_list_bs).listener(new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
-                                    showToase(context, bsModel, which);
+                                    showToast(context, bsModel, which);
                                 }
                             }).build();
 
@@ -74,7 +74,7 @@ public class BSViewHolder extends RecyclerView.ViewHolder {
                             sheet = new BottomSheet.Builder(context).sheet(R.menu.menu_noicon_bs).listener(new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
-                                    showToase(context, bsModel, which);
+                                    showToast(context, bsModel, which);
                                 }
                             }).build();
                             break;
@@ -82,7 +82,7 @@ public class BSViewHolder extends RecyclerView.ViewHolder {
                             sheet = new BottomSheet.Builder(context).darkTheme().title("To " + bsModel.getName()).sheet(R.menu.menu_list_bs).listener(new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
-                                    showToase(context, bsModel, which);
+                                    showToast(context, bsModel, which);
                                 }
                             }).build();
                             break;
@@ -90,7 +90,7 @@ public class BSViewHolder extends RecyclerView.ViewHolder {
                             sheet = new BottomSheet.Builder(context).sheet(R.menu.menu_list_bs).listener(new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
-                                    showToase(context, bsModel, which);
+                                    showToast(context, bsModel, which);
                                 }
                             }).grid().build();
                             break;
@@ -98,7 +98,7 @@ public class BSViewHolder extends RecyclerView.ViewHolder {
                             sheet = new BottomSheet.Builder(context, R.style.BottomSheet_StyleDialog).title("To " + bsModel.getName()).sheet(R.menu.menu_list_bs).listener(new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
-                                    showToase(context, bsModel, which);
+                                    showToast(context, bsModel, which);
                                 }
                             }).build();
                             break;
@@ -106,7 +106,7 @@ public class BSViewHolder extends RecyclerView.ViewHolder {
                             sheet = new BottomSheet.Builder(context).title("To " + bsModel.getName()).sheet(R.menu.menu_longlist_bs).listener(new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
-                                    showToase(context, bsModel, which);
+                                    showToast(context, bsModel, which);
                                 }
                             }).limit(R.integer.bs_initial_list_row).build();
                             break;
@@ -120,7 +120,7 @@ public class BSViewHolder extends RecyclerView.ViewHolder {
                             sheet = new BottomSheet.Builder(context).icon(getRoundedBitmap(context, R.mipmap.ic_launcher)).title("To " + bsModel.getName()).sheet(R.menu.menu_list_bs).listener(new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
-                                    showToase(context, bsModel, which);
+                                    showToast(context, bsModel, which);
                                 }
                             }).build();
                             final Menu menu = sheet.getMenu();
@@ -152,15 +152,28 @@ public class BSViewHolder extends RecyclerView.ViewHolder {
         return new BSViewHolder(v);
     }
 
+    /**
+     * 分享的BottomSheets.Builder
+     *
+     * @param context Context
+     * @param text    String
+     * @return BottomSheet.Builder
+     */
     private static BottomSheet.Builder getShareActions(Context context, String text) {
         final Intent shareIntent = new Intent(Intent.ACTION_SEND);
         shareIntent.setType("text/plain");
         shareIntent.putExtra(Intent.EXTRA_TEXT, text);
-
         return BottomSheetHelper.shareAction(context, shareIntent);
     }
 
-    private static void showToase(Context context, BSModel bsModel, int which) {
+    /**
+     * 现实Toast
+     *
+     * @param context Context
+     * @param bsModel BSModel
+     * @param which   int
+     */
+    private static void showToast(Context context, BSModel bsModel, int which) {
         switch (which) {
             case R.id.share:
                 Toast.makeText(context, bsModel.getName() + " share ", Toast.LENGTH_LONG).show();
@@ -177,6 +190,13 @@ public class BSViewHolder extends RecyclerView.ViewHolder {
         }
     }
 
+    /**
+     * 创建圆角图标
+     *
+     * @param mContext Context
+     * @param imageId  int
+     * @return Drawable
+     */
     public static Drawable getRoundedBitmap(Context mContext, int imageId) {
         Bitmap src = BitmapFactory.decodeResource(mContext.getResources(), imageId);
         Bitmap dst;
@@ -194,6 +214,5 @@ public class BSViewHolder extends RecyclerView.ViewHolder {
     public void onBindViewHolder(final BSModel bsModel) {
         rootview.setTag(bsModel);
         tvBsItem.setText(bsModel.getName());
-
     }
 }

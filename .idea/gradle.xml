@@ -10,6 +10,7 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/MengBottomSheets" />
+            <option value="$PROJECT_DIR$/MengGlidePalette" />
             <option value="$PROJECT_DIR$/MengListLib" />
             <option value="$PROJECT_DIR$/MengPhotoPicker" />
             <option value="$PROJECT_DIR$/MengRecyclerView" />
