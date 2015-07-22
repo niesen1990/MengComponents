@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:id="@+id/head_bac"
+              android:layout_width="match_parent"
+              android:layout_height="192dp"
+              android:background="?attr/colorPrimaryDark"
+              android:padding="16dp"
+              android:theme="@style/ThemeOverlay.AppCompat.Dark"
+              android:orientation="vertical"
+              android:gravity="bottom">
+
+    <!--<ImageView
+        android:layout_width="72.0dp"
+        android:layout_height="72.0dp"
+        android:src="@mipmap/ic_launcher"
+        android:layout_marginBottom="20.0dp"
+        />-->
+
+    <com.facebook.drawee.view.SimpleDraweeView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/head"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        app:failureImage="@android:drawable/ic_menu_compass"
+        app:placeholderImage="@android:drawable/ic_menu_camera"
+        app:roundAsCircle="true"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="SmartKids"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="https://www.smart-kids.com"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"/>
+
+</LinearLayout>
