@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/share"
+        android:icon="@android:drawable/ic_menu_share"
+        android:title="分享"/>
+    <item
+        android:id="@+id/upload"
+        android:icon="@android:drawable/ic_menu_upload"
+        android:title="上传"/>
+    <item
+        android:id="@+id/call"
+        android:icon="@android:drawable/ic_menu_call"
+        android:title="电话"/>
+    <group android:id="@android:id/empty">
+        <item
+            android:id="@+id/help"
+            android:icon="@android:drawable/ic_menu_help"
+            android:title="帮助"/>
+    </group>
+</menu>

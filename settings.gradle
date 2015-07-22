@@ -1,1 +1,1 @@
-include ':MengListLib', ':MengRecyclerView', ':MengPhotoPicker', 'TestMengList'
+include ':MengListLib', ':MengRecyclerView', ':MengPhotoPicker', ':MengBottomSheets', 'TestMengList'

@@ -104,39 +104,39 @@ public class EntryListViewHolder extends RecyclerView.ViewHolder {
                 .build();
         DataSource<CloseableReference<CloseableImage>> dataSource = imagePipeline.fetchDecodedImage(imageRequest, App.application);
 
-            dataSource.subscribe(new BaseBitmapDataSubscriber() {
-                @Override
-                public void onNewResultImpl(@Nullable Bitmap bitmap) {
-                    if (bitmap == null) {
-                        return;
-                    }
-                    //异步获得bitmap图片颜色值
-                    Palette.from(bitmap).generate(new Palette.PaletteAsyncListener() {
-                        @Override
-                        public void onGenerated(Palette palette) {
-                            Palette.Swatch vibrant = palette.getVibrantSwatch();//有活力
-                            Palette.Swatch c = palette.getDarkVibrantSwatch();//有活力 暗色
-                            Palette.Swatch d = palette.getLightVibrantSwatch();//有活力 亮色
-                            Palette.Swatch f = palette.getMutedSwatch();//柔和
-                            Palette.Swatch a = palette.getDarkMutedSwatch();//柔和 暗色
-                            Palette.Swatch b = palette.getLightMutedSwatch();//柔和 亮色
+        dataSource.subscribe(new BaseBitmapDataSubscriber() {
+            @Override
+            public void onNewResultImpl(@Nullable Bitmap bitmap) {
+                if (bitmap == null) {
+                    return;
+                }
+                //异步获得bitmap图片颜色值
+                Palette.from(bitmap).generate(new Palette.PaletteAsyncListener() {
+                    @Override
+                    public void onGenerated(Palette palette) {
+                        Palette.Swatch vibrant = palette.getVibrantSwatch();//有活力
+                        Palette.Swatch c = palette.getDarkVibrantSwatch();//有活力 暗色
+                        Palette.Swatch d = palette.getLightVibrantSwatch();//有活力 亮色
+                        Palette.Swatch f = palette.getMutedSwatch();//柔和
+                        Palette.Swatch a = palette.getDarkMutedSwatch();//柔和 暗色
+                        Palette.Swatch b = palette.getLightMutedSwatch();//柔和 亮色
 
-                            if (vibrant != null) {
-                                int color1 = vibrant.getBodyTextColor();//内容颜色
-                                int color2 = vibrant.getTitleTextColor();//标题颜色
-                                int color3 = vibrant.getRgb();//rgb颜色
-                                cardview.setBackgroundColor(vibrant.getRgb());
-                                title.setTextColor(vibrant.getTitleTextColor());
-                            }
+                        if (vibrant != null) {
+                            int color1 = vibrant.getBodyTextColor();//内容颜色
+                            int color2 = vibrant.getTitleTextColor();//标题颜色
+                            int color3 = vibrant.getRgb();//rgb颜色
+                            cardview.setBackgroundColor(vibrant.getRgb());
+                            title.setTextColor(vibrant.getTitleTextColor());
                         }
-                    });
-                }
+                    }
+                });
+            }
 
-                @Override
-                public void onFailureImpl(DataSource dataSource) {
-                    // No cleanup required here
-                }
-            }, CallerThreadExecutor.getInstance());
+            @Override
+            public void onFailureImpl(DataSource dataSource) {
+                // No cleanup required here
+            }
+        }, CallerThreadExecutor.getInstance());
 
 
         // 第四种方式Bitmap的引用

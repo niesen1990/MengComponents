@@ -221,8 +221,7 @@ public abstract class DataController<T> implements DataProvider<T> {
         doInitialize(new Callback() {
             @Override
             public void onFailure(Request request, IOException e) {
-                dispatchUIMessage(UIMessageType.InitializeDone, e, null);
-                isBusy = false;
+                initFailure(e);
             }
 
             @Override
@@ -230,24 +229,42 @@ public abstract class DataController<T> implements DataProvider<T> {
                 if (response.isSuccessful()) {
                     Log.i("response", "response = " + response.toString());
                     List<T> data = doParser(response);
-                    add(data);
-                    mRequestTimes++;
-                    mNextTimeOffset = mPageSize * mRequestTimes;
-                    dispatchAdapterMessage(AdapterMessageType.CHANGE, 0);
-                    dispatchUIMessage(UIMessageType.InitializeDone, null, data);
-                    if (isEnd) {
-                        dispatchUIMessage(UIMessageType.End, null, null);
-                    }
-                    isBusy = false;
-                    // 是否保存数据
-                    if (isCache()) {
-                        doSave(data);
-                    }
+                    initSuccess(data);
+
                 } else {
                     Log.i("response", "response = " + response.toString());
                 }
             }
         });
+    }
+
+    /**
+     * 初始化成功
+     *
+     * @param data List<T>
+     */
+    public void initSuccess(List<T> data) {
+        add(data);
+        mRequestTimes++;
+        mNextTimeOffset = mPageSize * mRequestTimes;
+        dispatchAdapterMessage(AdapterMessageType.CHANGE, 0);
+        dispatchUIMessage(UIMessageType.InitializeDone, null, data);
+        if (isEnd) {
+            dispatchUIMessage(UIMessageType.End, null, null);
+        }
+        isBusy = false;
+        // 是否保存数据
+        if (isCache()) {
+            doSave(data);
+        }
+    }
+
+    /**
+     * 初始化失败
+     */
+    public void initFailure(Exception e) {
+        dispatchUIMessage(UIMessageType.InitializeDone, e, null);
+        isBusy = false;
     }
 
     /**
@@ -260,25 +277,41 @@ public abstract class DataController<T> implements DataProvider<T> {
         doRefresh(new Callback() {
             @Override
             public void onFailure(Request request, IOException e) {
-                dispatchUIMessage(UIMessageType.RefreshingDone, e, null);
-                isBusy = false;
+                refreshFailure(e);
             }
 
             @Override
             public void onResponse(Response response) throws IOException {
                 List<T> data = doParser(response);
-                add(data);
-                mRequestTimes++;
-                mNextTimeOffset = mPageSize * mRequestTimes;
-                dispatchAdapterMessage(AdapterMessageType.CHANGE, 0);
-                dispatchUIMessage(UIMessageType.RefreshingDone, null, data);
-                if (isEnd) {
-                    dispatchUIMessage(UIMessageType.End, null, null);
-                }
-                isBusy = false;
+                refreshSuccess(data);
             }
         });
 
+    }
+
+    /**
+     * 刷新成功
+     * @param data List<T>
+     */
+    public void refreshSuccess(List<T> data) {
+        add(data);
+        mRequestTimes++;
+        mNextTimeOffset = mPageSize * mRequestTimes;
+        dispatchAdapterMessage(AdapterMessageType.CHANGE, 0);
+        dispatchUIMessage(UIMessageType.RefreshingDone, null, data);
+        if (isEnd) {
+            dispatchUIMessage(UIMessageType.End, null, null);
+        }
+        isBusy = false;
+    }
+
+    /**
+     * 刷新失败
+     * @param e
+     */
+    public void refreshFailure(Exception e) {
+        dispatchUIMessage(UIMessageType.RefreshingDone, e, null);
+        isBusy = false;
     }
 
     /**
@@ -293,24 +326,40 @@ public abstract class DataController<T> implements DataProvider<T> {
         doMore(new Callback() {
             @Override
             public void onFailure(Request request, IOException e) {
-                dispatchUIMessage(UIMessageType.LoadMoreDone, e, null);
-                isBusy = false;
+                moreFailure(e);
             }
 
             @Override
             public void onResponse(Response response) throws IOException {
                 List<T> data = doParser(response);
-                append(data);
-                mRequestTimes++;
-                mNextTimeOffset = mPageSize * mRequestTimes;
-                dispatchAdapterMessage(AdapterMessageType.CHANGE, 0);
-                dispatchUIMessage(UIMessageType.LoadMoreDone, null, data);
-                if (isEnd) {
-                    dispatchUIMessage(UIMessageType.End, null, null);
-                }
-                isBusy = false;
+                moreSuccess(data);
             }
         });
+    }
+
+    /**
+     * 加载更多成功
+     * @param data List<T>
+     */
+    public void moreSuccess(List<T> data) {
+        append(data);
+        mRequestTimes++;
+        mNextTimeOffset = mPageSize * mRequestTimes;
+        dispatchAdapterMessage(AdapterMessageType.CHANGE, 0);
+        dispatchUIMessage(UIMessageType.LoadMoreDone, null, data);
+        if (isEnd) {
+            dispatchUIMessage(UIMessageType.End, null, null);
+        }
+        isBusy = false;
+    }
+
+    /**
+     * 加载更多失败
+     * @param e
+     */
+    public void moreFailure(Exception e) {
+        dispatchUIMessage(UIMessageType.LoadMoreDone, e, null);
+        isBusy = false;
     }
 
     private void dispatchAdapterMessage(AdapterMessageType type, int position) {

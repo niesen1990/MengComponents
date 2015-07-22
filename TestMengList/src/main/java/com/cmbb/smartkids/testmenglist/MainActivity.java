@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     private CommonListView listView;
     private SimpleCursorAdapter mSimpleCursorAdapter;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
