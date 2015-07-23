@@ -18,6 +18,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     private Button btnBsheets;
     private Button btnPalettle;
     private Button btnUpdate;
+    private Button btnTransition;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +47,8 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         btnPalettle.setOnClickListener(this);
         btnUpdate = (Button) findViewById(R.id.btn_update);
         btnUpdate.setOnClickListener(this);
+        btnTransition = (Button) findViewById(R.id.btn_transition);
+        btnTransition.setOnClickListener(this);
     }
 
 
@@ -85,6 +88,9 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.btn_update:
                 intent = new Intent(this, MainPgyActivity.class);
+                break;
+            case R.id.btn_transition:
+                intent = new Intent(this, MainTransitionActivity.class);
                 break;
         }
         startActivity(intent);

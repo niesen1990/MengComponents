@@ -17,7 +17,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
         android:visibility="gone"
-        android:text="出问题了" />
+        android:text="网络出现问题" />
 
     <Button
         android:text="重试"

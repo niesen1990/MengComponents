@@ -14,7 +14,7 @@ import com.cmbb.smartkids.testmenglist.fragments.EntryListFragment;
 import com.cmbb.smartkids.testmenglist.network.HomeSameAge;
 import com.facebook.drawee.view.SimpleDraweeView;
 
-public class MainAppBarActivity extends AppCompatActivity implements AppBarLayout.OnOffsetChangedListener{
+public class MainAppBarActivity extends AppCompatActivity implements AppBarLayout.OnOffsetChangedListener {
 
     private AppBarLayout appbar;
     private EntryListFragment entryListFragment;
@@ -31,9 +31,8 @@ public class MainAppBarActivity extends AppCompatActivity implements AppBarLayou
             bar.setDisplayHomeAsUpEnabled(true);
         }
 
-        CollapsingToolbarLayout collapsingToolbar =(CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
+        CollapsingToolbarLayout collapsingToolbar = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
         collapsingToolbar.setTitle("详情界面");
-
 
 
         // 设置背景图片

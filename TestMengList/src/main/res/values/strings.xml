@@ -20,4 +20,8 @@
     <string name="title_activity_main_recycler">Recycler组件</string>
     <string name="title_activity_main_pgy">蒲公英内测升级</string>
     <string name="update_component">蒲公英升级</string>
+    <string name="title_activity_main_transition">MainTransitionActivity</string>
+    <string name="transition_component">动画组件</string>
+    <string name="iv_transition">meizu</string>
+    <string name="title_activity_main_transition2">MainTransition2Activity</string>
 </resources>

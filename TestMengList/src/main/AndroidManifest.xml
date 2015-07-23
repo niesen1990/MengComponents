@@ -1,24 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest
-    package="com.cmbb.smartkids.testmenglist"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.cmbb.smartkids.testmenglist" >
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <!-- 必选 -->
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <!-- 获取网络状态 -->
-    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <!-- 获取设备信息 -->
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <!-- 获取MAC地址 -->
-    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <!-- 允许程序录制音频 -->
 
 
     <!-- 可选 -->
-    <uses-permission android:name="android.permission.READ_LOGS"/>
+    <uses-permission android:name="android.permission.READ_LOGS" />
 
     <!-- 获取logcat日志 -->
     <application
@@ -26,67 +25,95 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme" >
         <activity
             android:name=".HomeActivity"
-            android:label="@string/title_activity_home">
+            android:label="@string/title_activity_home" >
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name=".MainActivity"
-            android:label="@string/app_name">
+            android:label="@string/app_name" >
         </activity>
         <activity
             android:name=".MainRecyclerActivity"
-            android:label="@string/title_activity_main_recycler">
+            android:label="@string/title_activity_main_recycler"
+            android:parentActivityName=".HomeActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.cmbb.smartkids.testmenglist.HomeActivity" />
         </activity>
 
         <provider
             android:name=".db.ProviderPostModelWonderful"
             android:authorities="com.cmbb.smartkids.testmenglist.postmodelwonderful"
             android:enabled="true"
-            android:exported="false"/>
+            android:exported="false" />
 
         <!-- List Recycler 启动Activity -->
         <activity
             android:name=".MainFrescoActivity"
-            android:label="@string/title_activity_main_fresco">
+            android:label="@string/title_activity_main_fresco" >
         </activity>
         <activity
             android:name=".MainAppBarActivity"
-            android:label="@string/title_activity_main_app_bar">
+            android:label="@string/title_activity_main_app_bar" >
         </activity>
 
         <!-- PhotoPicker 启动Activity -->
         <activity
             android:name=".MainPhotoPickerActivity"
-            android:label="@string/title_activity_main_photo_picker">
+            android:label="@string/title_activity_main_photo_picker"
+            android:parentActivityName=".HomeActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.cmbb.smartkids.testmenglist.HomeActivity" />
         </activity>
 
         <!-- PhotoPicker -->
-        <activity android:name="com.cmbb.smartkids.photopicker.PhotoPickerActivity"/>
-        <activity android:name="com.cmbb.smartkids.photopicker.PhotoPagerActivity"/>
+        <activity android:name="com.cmbb.smartkids.photopicker.PhotoPickerActivity" />
+        <activity android:name="com.cmbb.smartkids.photopicker.PhotoPagerActivity" />
         <!-- PhotoPicker -->
 
         <activity
             android:name=".MainBottomSheetActivity"
-            android:label="@string/title_activity_main_bottom_sheet">
+            android:label="@string/title_activity_main_bottom_sheet"
+            android:parentActivityName=".HomeActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.cmbb.smartkids.testmenglist.HomeActivity" />
         </activity>
         <activity
             android:name=".MainPaletteActivity"
-            android:label="@string/title_activity_main_palette">
+            android:label="@string/title_activity_main_palette"
+            android:parentActivityName=".HomeActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.cmbb.smartkids.testmenglist.HomeActivity" />
         </activity>
         <activity
             android:name=".MainPgyActivity"
             android:label="@string/title_activity_main_pgy"
-            android:parentActivityName=".HomeActivity">
+            android:parentActivityName=".HomeActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.cmbb.smartkids.testmenglist.HomeActivity"/>
+                android:value="com.cmbb.smartkids.testmenglist.HomeActivity" />
+        </activity>
+        <activity
+            android:name=".MainTransitionActivity"
+            android:label="@string/title_activity_main_transition"
+            android:parentActivityName=".HomeActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.cmbb.smartkids.testmenglist.HomeActivity" />
+        </activity>
+        <activity
+            android:name=".MainTransition2Activity"
+            android:label="@string/title_activity_main_transition2" >
         </activity>
     </application>
 

@@ -37,6 +37,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
+            android:gravity="center"
             android:text="@string/meng_list_network_err"
             android:layout_marginBottom="20dp"
             android:visibility="gone"

@@ -120,13 +120,13 @@ public abstract class CommonFragment<T> extends ContentFragmentBase {
     public void onRefreshDone(Exception e, List data) {
         if (e == null) {
             if (data == null || data.size() == 0) {
-                Toast.makeText(getActivity(), "没啦，干货正在准备中呢！", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "无数据加载", Toast.LENGTH_SHORT).show();
             } else {
-                Toast.makeText(getActivity(), "成功挖掘 " + data.size() + " 条新干货", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "已加载" + data.size() + " 数据", Toast.LENGTH_SHORT).show();
             }
         } else {
             e.printStackTrace();
-            Toast.makeText(getActivity(), "出现了些小问题", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), "网络出现问题", Toast.LENGTH_SHORT).show();
         }
         mSwipeRefresh.setRefreshing(false);
     }

@@ -18,7 +18,7 @@ public class FooterViewHolder extends RecyclerView.ViewHolder {
     }
 
     public void onBindViewHolder() {
-        tips.setText("到头了");
+        tips.setText(R.string.footer_end_tips);
         tips.setVisibility(View.VISIBLE);
         progressBar.hide();
     }
