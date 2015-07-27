@@ -25,6 +25,7 @@ import java.util.List;
  * 类描述：
  * 创建人：N.Sun
  * 创建时间：15/7/20 下午5:44
+ * 修改：bug selector
  */
 public class PhotoGridAdapter extends SelectableAdapter<PhotoGridAdapter.PhotoViewHolder> {
 
@@ -126,6 +127,8 @@ public class PhotoGridAdapter extends SelectableAdapter<PhotoGridAdapter.PhotoVi
             });
 
         } else {
+            // bug selector
+
             holder.ivPhoto.setImageResource(R.drawable.camera);
         }
     }
@@ -133,8 +136,7 @@ public class PhotoGridAdapter extends SelectableAdapter<PhotoGridAdapter.PhotoVi
 
     @Override
     public int getItemCount() {
-        int photosCount =
-                photoDirectories.size() == 0 ? 0 : getCurrentPhotos().size();
+        int photosCount = photoDirectories.size() == 0 ? 0 : getCurrentPhotos().size();
         if (showCamera()) {
             return photosCount + 1;
         }

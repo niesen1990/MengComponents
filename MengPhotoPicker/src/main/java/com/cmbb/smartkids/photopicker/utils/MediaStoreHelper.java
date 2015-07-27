@@ -67,7 +67,6 @@ public class MediaStoreHelper {
                 photoDirectory.setId(bucketId);
                 photoDirectory.setName(name);
 
-                // bug else 不会执行
                 if (!directories.contains(photoDirectory)) {// 不包含
                     photoDirectory.setCoverPath(path);
                     photoDirectory.addPhoto(imageId, path);

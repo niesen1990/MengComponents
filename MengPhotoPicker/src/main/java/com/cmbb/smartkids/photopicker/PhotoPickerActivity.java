@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -39,7 +40,6 @@ public class PhotoPickerActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_photo_picker);
-
         Toolbar mToolbar = (Toolbar) findViewById(R.id.toolbar);
         mToolbar.setTitle(R.string.images);
         setSupportActionBar(mToolbar);
@@ -150,5 +150,11 @@ public class PhotoPickerActivity extends AppCompatActivity {
 
     public PhotoPickerActivity getActivity() {
         return this;
+    }
+
+    @Override
+    protected void onDestroy() {
+        Log.i("meizu", "meizu destory");
+        super.onDestroy();
     }
 }

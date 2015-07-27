@@ -9,6 +9,7 @@ import android.support.v7.widget.ListPopupWindow;
 import android.support.v7.widget.OrientationHelper;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -54,21 +55,27 @@ public class PhotoPickerFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setRetainInstance(true);
+        //setRetainInstance(true);
+        Log.i("meizu", "meizu fragment onCreate");
         mPhotoDirectories = new ArrayList<>();
         mPhotoGridAdapter = new PhotoGridAdapter(this, mPhotoDirectories);
         mPopupDirectoryListAdapter = new PopupDirectoryListAdapter(getActivity(), mPhotoDirectories);
         mImageCaptureManager = new ImageCaptureManager(getActivity());
-        MediaStoreHelper.getPhotoDirs(getActivity(),
-                new MediaStoreHelper.PhotosResultCallback() {
-                    @Override
-                    public void onResultCallback(List<PhotoDirectory> directories) {
-                        mPhotoGridAdapter.notifyDataSetChanged();
-                        PhotoPickerFragment.this.mPhotoDirectories.addAll(directories);
-                        mPopupDirectoryListAdapter.notifyDataSetChanged();
-                    }
-                });
+        MediaStoreHelper.getPhotoDirs(getActivity(), new MediaStoreHelper.PhotosResultCallback() {
+            @Override
+            public void onResultCallback(List<PhotoDirectory> directories) {
+                mPhotoGridAdapter.notifyDataSetChanged();
+                PhotoPickerFragment.this.mPhotoDirectories.addAll(directories);
+                mPopupDirectoryListAdapter.notifyDataSetChanged();
+            }
+        });
 
+    }
+
+    @Override
+    public void onDestroy() {
+        Log.i("meizu", "meizu fragment onDestroy");
+        super.onDestroy();
     }
 
     @Override
